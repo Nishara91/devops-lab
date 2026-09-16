@@ -1,0 +1,15 @@
+#!/bin/bash
+echo "=============================="
+echo "  SERVER HEALTH MONITOR"
+echo "=============================="
+echo "Date: $(date)"
+echo ""
+echo "--> Memory Usage:"
+free -m | grep "Mem:"
+echo ""
+echo "--> Disk Space:"
+df -h / | tail -n 1
+echo ""
+echo "--> Internet Connectivity:"
+ping -c 1 google.com > /dev/null 2>&1 && echo "Internet: OK" || echo "Internet: DOWN"
+echo "=============================="
